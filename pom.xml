@@ -388,4 +388,52 @@
         <finalName>mediterranean</finalName>
     </build>
 
+    <profiles>
+        <profile>
+            <id>dev</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <properties>
+                <staging>dev</staging>
+                <mysql.host>127.0.0.1</mysql.host>
+                <mysql.database>test</mysql.database>
+                <mysql.port>3306</mysql.port>
+                <mysql.username>root</mysql.username>
+                <mysql.password>123</mysql.password>
+                <cache.host>127.0.0.1</cache.host>
+                <cache.port>6379</cache.port>
+                <cache.password></cache.password>
+                <log4j.level>INFO</log4j.level>
+                <log4j.log.path>/var/log/xms</log4j.log.path>
+                <send.sms.enabled>false</send.sms.enabled>
+                <upload.attach.path>/tmp/attach</upload.attach.path>
+                <perf4j.enabled>false</perf4j.enabled>
+                <locLogin.enabled>true</locLogin.enabled>
+            </properties>
+        </profile>
+        <profile>
+            <id>production</id>
+            <properties>
+                <staging>production</staging>
+                <mysql.host>127.0.0.1</mysql.host>
+                <mysql.database>db</mysql.database>
+                <mysql.port>3306</mysql.port>
+                <mysql.username>root</mysql.username>
+                <mysql.password>iqutouzi123</mysql.password>
+                <cache.host>127.0.0.1</cache.host>
+                <cache.port>6379</cache.port>
+                <cache.password></cache.password>
+                <quartz.autoStartup>false</quartz.autoStartup>
+                <quartz.storageCheckCron>0 0/30 * * * ?</quartz.storageCheckCron>
+                <log4j.level>INFO</log4j.level>
+                <log4j.log.path>/var/log/xms</log4j.log.path>
+                <send.sms.enabled>false</send.sms.enabled>
+                <upload.attach.path>/tmp/attach</upload.attach.path>
+                <perf4j.enabled>false</perf4j.enabled>
+                <locLogin.enabled>true</locLogin.enabled>
+            </properties>
+        </profile>
+    </profiles>
+
 </project>

@@ -16,7 +16,7 @@
 
     <import resource="conf/application-beans.xml"/>
     <import resource="conf/application-db.xml"/>
-    <!--<import resource="conf/application-cache.xml"/>-->
+    <import resource="conf/application-cache.xml"/>
     <context:annotation-config/>
 
 </beans>

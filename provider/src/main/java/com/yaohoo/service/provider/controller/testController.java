@@ -26,13 +26,12 @@ public class testController {
 
     @RequestMapping(value = "/{id}/test1.do", method = RequestMethod.GET)
     public Map test1(@PathVariable int id) {
-        System.out.printf(testService.test(id));
-        return ImmutableMap.builder().put("name", testService.test(id)).build();
+        String name = testService.test(id);
+        return ImmutableMap.builder().put("name", name).build();
     }
 
     @RequestMapping(value = "/{id}/test2.do", method = RequestMethod.GET)
     public String test2(@PathVariable int id) {
-        System.out.printf(testService.test(id));
         return  testService.test(id);
     }
 
