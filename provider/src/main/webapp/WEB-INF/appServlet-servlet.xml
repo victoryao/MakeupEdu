@@ -15,7 +15,7 @@
 
     <!-- 自动扫描且只扫描@Controller -->
     <context:component-scan
-            base-package="com.yaohoo.service.provier.controller"
+            base-package="com.yaohoo.service.provider.controller"
             use-default-filters="false">
         <context:include-filter
                 type="annotation"

@@ -15,7 +15,7 @@
     <context-param>
         <param-name>contextConfigLocation</param-name>
         <param-value>
-            classpath:application.xml
+            classpath*:application-*.xml
         </param-value>
     </context-param>
     <listener>
@@ -38,15 +38,15 @@
     </filter-mapping>
 
 
-    <filter>
-        <filter-name>sessionFilter</filter-name>
-        <filter-class>com.yaohoo.service.filter.SessionFilter</filter-class>
-    </filter>
+    <!--<filter>-->
+        <!--<filter-name>sessionFilter</filter-name>-->
+        <!--<filter-class>com.yaohoo.service.filter.SessionFilter</filter-class>-->
+    <!--</filter>-->
 
-    <filter-mapping>
-        <filter-name>sessionFilter</filter-name>
-        <url-pattern>*.do</url-pattern>
-    </filter-mapping>
+    <!--<filter-mapping>-->
+        <!--<filter-name>sessionFilter</filter-name>-->
+        <!--<url-pattern>*.do</url-pattern>-->
+    <!--</filter-mapping>-->
 
     <filter>
         <filter-name>HiddenHttpMethodFilter</filter-name>
