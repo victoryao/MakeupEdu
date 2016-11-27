@@ -5,7 +5,7 @@ import java.util.List;
 /**
  * Created by yaoqiang on 2016/11/27.
  */
-public class StudentInfo {
+public class StudentInfoModel {
     private int id;
     private int stuId;
     private List<RemarkModel> clsInterests;

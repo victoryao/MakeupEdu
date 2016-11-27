@@ -6,8 +6,8 @@ package com.yaohoo.service.domain.model;
 public class StudentRegisterModel {
 
     private StudentModel student;
-    private  StudentInfo stuInfo;
-    private QueryModel query;
+    private StudentInfoModel stuInfo;
+    private StuQueryModel query;
 
     public StudentModel getStudent() {
         return student;
@@ -17,19 +17,19 @@ public class StudentRegisterModel {
         this.student = student;
     }
 
-    public StudentInfo getStuInfo() {
+    public StudentInfoModel getStuInfo() {
         return stuInfo;
     }
 
-    public void setStuInfo(StudentInfo stuInfo) {
+    public void setStuInfo(StudentInfoModel stuInfo) {
         this.stuInfo = stuInfo;
     }
 
-    public QueryModel getQuery() {
+    public StuQueryModel getQuery() {
         return query;
     }
 
-    public void setQuery(QueryModel query) {
+    public void setQuery(StuQueryModel query) {
         this.query = query;
     }
 }
