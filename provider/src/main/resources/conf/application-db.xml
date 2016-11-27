@@ -19,7 +19,7 @@
           destroy-method="close">
         <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
         <property name="url"
-                  value="jdbc:mysql://127.0.0.1:3306/test?zeroDateTimeBehavior=convertToNull&amp;useUnicode=true&amp;characterEncoding=UTF8&amp;connectTimeout=1000&amp;socketTimeout=3000"/>
+                  value="jdbc:mysql://127.0.0.1:3306/makeupedu?zeroDateTimeBehavior=convertToNull&amp;useUnicode=true&amp;characterEncoding=UTF8&amp;connectTimeout=1000&amp;socketTimeout=3000"/>
         <property name="username" value="root"/>
         <property name="password" value="viqxkj"/>
         <!-- 配置初始化大小、最小、最大 -->

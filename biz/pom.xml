@@ -11,7 +11,13 @@
 
     <artifactId>mediterranean-biz</artifactId>
 
-
+    <dependencies>
+        <dependency>
+            <groupId>com.yaohoo.service</groupId>
+            <artifactId>mediterranean-service</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+    </dependencies>
 
 
 </project>

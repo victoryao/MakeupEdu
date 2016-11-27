@@ -14,7 +14,7 @@ import java.util.Map;
  * Created by yaoqiang on 16/4/14.
  */
 @RestController
-public class testController {
+public class TestController {
 
     @Resource
     private TestService testService;
