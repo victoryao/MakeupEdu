@@ -21,6 +21,7 @@ public class StudentRegisterController {
 
     @RequestMapping(value = "/register.do", method = RequestMethod.POST)
     public Map<String, Object> addStudentregister(@RequestParam String json) {
+        System.out.println(json);
         studentBiz.addStudentregister(json);
         return ImmutableMap.<String, Object>builder().put("data", "success").build();
     }

@@ -8,7 +8,8 @@ public class StudentModel {
     private int id;
     private String name;
     private int age;
-    private int phone;
+    private int gender;
+    private long phone;
     private int qq;
     private int isWork;
     private RemarkModel jobSort;
@@ -19,6 +20,14 @@ public class StudentModel {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public int getGender() {
+        return gender;
+    }
+
+    public void setGender(int gender) {
+        this.gender = gender;
     }
 
     public String getName() {
@@ -37,11 +46,11 @@ public class StudentModel {
         this.age = age;
     }
 
-    public int getPhone() {
+    public long getPhone() {
         return phone;
     }
 
-    public void setPhone(int phone) {
+    public void setPhone(long phone) {
         this.phone = phone;
     }
 
