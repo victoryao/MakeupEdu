@@ -11,5 +11,11 @@
 
     <artifactId>mediterranean-dao</artifactId>
 
-
+<dependencies>
+    <dependency>
+        <groupId>com.yaohoo.service</groupId>
+        <artifactId>mediterranean-domain</artifactId>
+        <version>1.0-SNAPSHOT</version>
+    </dependency>
+</dependencies>
 </project>
