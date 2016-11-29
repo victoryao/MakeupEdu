@@ -6,6 +6,7 @@ import com.yaohoo.service.domain.model.StuQueryModel;
 import com.yaohoo.service.domain.model.StudentInfoModel;
 import com.yaohoo.service.domain.model.StudentModel;
 import com.yaohoo.service.domain.model.StudentRegisterModel;
+import com.yaohoo.service.domain.model.vo.StudentRegisterVO;
 import com.yaohoo.service.service.student.StuQueryHisService;
 import com.yaohoo.service.service.student.StudentInfoService;
 import com.yaohoo.service.service.student.StudentService;
@@ -37,8 +38,18 @@ public class StudentBiz {
         StudentInfoModel studentInfoModel = registerModel.getStuInfo();
         StuQueryModel queryModel = registerModel.getQuery();
         studentService.addStudent(studentModel);
+        studentInfoModel.setStuId(studentModel.getId());
         studentInfoService.addStudentInfo(studentInfoModel);
+        queryModel.setStuId(studentModel.getId());
         stuQueryHisService.addStuQueryHis(queryModel);
+    }
+
+    public StudentRegisterVO getStudentRegisterModelById(int id) {
+        StudentRegisterVO sr = new StudentRegisterVO();
+        sr.setStudent(studentService.getStudentById(id));
+        sr.setStuInfo(studentInfoService.getStudentInfoByStuId(id));
+        sr.setQuerys(stuQueryHisService.getStuQueryHisList(id));
+        return sr;
     }
 
 }

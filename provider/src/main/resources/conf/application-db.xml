@@ -2,11 +2,11 @@
 <beans
         xmlns="http://www.springframework.org/schema/beans"
         xmlns:mybatis="http://mybatis.org/schema/mybatis-spring"
-        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-        xmlns:context="http://www.springframework.org/schema/context"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:tx="http://www.springframework.org/schema/tx"
         xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
-                         http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd
-                        http://mybatis.org/schema/mybatis-spring http://mybatis.org/schema/mybatis-spring.xsd ">
+                        http://mybatis.org/schema/mybatis-spring http://mybatis.org/schema/mybatis-spring.xsd
+                        http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd">
+
 
     <mybatis:scan base-package="com.yaohoo.service.dao" factory-ref="sqlSessionFactory"/>
 
@@ -14,6 +14,12 @@
         <property name="configLocation" value="classpath:mybatis-config.xml"/>
         <property name="dataSource" ref="dataSource"/>
     </bean>
+
+    <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <property name="dataSource" ref="dataSource"/>
+    </bean>
+
+    <tx:annotation-driven transaction-manager="transactionManager" proxy-target-class="true"/>
 
     <bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource" init-method="init"
           destroy-method="close">
