@@ -25,4 +25,9 @@ public class StudentInfoService {
     public StudentInfoModel getStudentInfoByStuId(int stuId) {
         return stuInfoDAO.getStudentInfoById(stuId);
     }
+
+    public boolean updateStudentInfo(StudentInfoModel studentInfo) {
+        return writeStuInfoDAO.updateStudentInfo(studentInfo);
+    }
+
 }

@@ -4,6 +4,8 @@ import com.yaohoo.service.dao.fieldhandler.RemarkFieldHandler;
 import com.yaohoo.service.domain.model.StudentModel;
 import org.apache.ibatis.annotations.*;
 
+import java.util.List;
+
 /**
  * Created by yaoqiang on 2016/11/27.
  */
@@ -13,7 +15,18 @@ public interface IStudentDAO {
     @Results(value = {
             @Result(column = "jobSort", property = "jobSort", typeHandler = RemarkFieldHandler.class)
     })
-    StudentModel getStudentById(int id);
+    StudentModel getStudentById(@Param("id") int id);
 
 
+    @Select("select `name`, `gender`, `age`, `phone`,  `qq`, `is_work` as isWork, `job_sort` as jobSort, `created`, `modified`  from student where status = #{status} limit #{offset}, #{limit}")
+    @Results(value = {
+            @Result(column = "jobSort", property = "jobSort", typeHandler = RemarkFieldHandler.class)
+    })
+    List<StudentModel> getStudentsByStatusPaging(@Param("status") int status, @Param("offset") int offset, @Param("limit") int limit);
+
+    @Select("select `name`, `gender`, `age`, `phone`,  `qq`, `is_work` as isWork, `job_sort` as jobSort, `created`, `modified` from student where status = 2 and will_date = now() limit #{offset}, #{limit}")
+    List<StudentModel> getTodayWillStudentPaging(@Param("offset") int offset, @Param("limit") int limit);
+
+    @Select("select count(1) from student where status = 2 and will_date = now()")
+    int getTodayWillStudentCount();
 }

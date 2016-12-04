@@ -13,6 +13,9 @@ public class StudentModel {
     private int qq;
     private int isWork;
     private RemarkModel jobSort;
+    private int status;
+
+
 
     public int getId() {
         return id;
@@ -76,5 +79,13 @@ public class StudentModel {
 
     public void setJobSort(RemarkModel jobSort) {
         this.jobSort = jobSort;
+    }
+
+    public int getStatus() {
+        return status;
+    }
+
+    public void setStatus(int status) {
+        this.status = status;
     }
 }

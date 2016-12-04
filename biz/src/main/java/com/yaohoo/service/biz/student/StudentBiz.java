@@ -14,6 +14,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
+import java.util.Date;
+import java.util.List;
 
 /**
  * Created by yaoqiang on 2016/11/27.
@@ -44,12 +46,42 @@ public class StudentBiz {
         stuQueryHisService.addStuQueryHis(queryModel);
     }
 
+    @Transactional
+    public void updateStudentregister(String json) {
+        StudentRegisterModel registerModel = JSON.parseObject(json, StudentRegisterModel.class);
+        StudentModel studentModel = registerModel.getStudent();
+        StudentInfoModel studentInfoModel = registerModel.getStuInfo();
+        StuQueryModel queryModel = registerModel.getQuery();
+        studentService.updateStudent(studentModel);
+        studentInfoModel.setStuId(studentModel.getId());
+        studentInfoService.updateStudentInfo(studentInfoModel);
+        queryModel.setStuId(studentModel.getId());
+        stuQueryHisService.addStuQueryHis(queryModel);
+    }
+
+
     public StudentRegisterVO getStudentRegisterModelById(int id) {
         StudentRegisterVO sr = new StudentRegisterVO();
         sr.setStudent(studentService.getStudentById(id));
         sr.setStuInfo(studentInfoService.getStudentInfoByStuId(id));
         sr.setQuerys(stuQueryHisService.getStuQueryHisList(id));
         return sr;
+    }
+
+    public boolean updateStudentWillDate(int id, Date date) {
+        return studentService.updateStudentWillDate(id, date);
+    }
+
+    public List<StudentModel> getTodayWillStudentPaging(int offset, int limit) {
+        return studentService.getTodayWillStudentPaging(offset, limit);
+    }
+
+    public int getTodayWillStudentCount() {
+        return studentService.getTodayWillStudentCount();
+    }
+
+    public List<StudentModel> getStudentQueryPaging(int offset, int limit) {
+        return studentService.getTodayWillStudentPaging(offset, limit);
     }
 
 }

@@ -11,5 +11,12 @@
 
     <artifactId>makeupedu-domain</artifactId>
 
+    <dependencies>
+        <dependency>
+            <groupId>com.yaohoo.service</groupId>
+            <artifactId>makeupedu-commons</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+    </dependencies>
 
 </project>
