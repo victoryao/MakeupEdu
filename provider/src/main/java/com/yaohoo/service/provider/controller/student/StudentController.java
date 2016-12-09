@@ -52,18 +52,17 @@ public class StudentController {
         return ImmutableMap.<String, Object>builder().put("data", studentModels).put("paging", paging).build();
     }
 
-    @RequestMapping(value = "/willdate/list.do", method = RequestMethod.GET)
+    @RequestMapping(value = "/student/list.do", method = RequestMethod.GET)
     public Map<String, Object> getStudentQueryPaging(
             @RequestParam(required = false, defaultValue = "0") int id,
-            @RequestParam(required = false, defaultValue = "") String name,
-            @RequestParam(required = false, defaultValue = "0") int phone,
+            @RequestParam(required = false) String name,
+            @RequestParam(required = false, defaultValue = "0") long phone,
             @RequestParam(required = false, defaultValue = "0") int offset, @RequestParam(required = false, defaultValue = "10") int limit) {
-        int total = studentBiz.getTodayWillStudentCount();
+        int total = studentBiz.getStudentQueryCount(id, name, phone);
         APIUtils.Paging paging = APIUtils.makePaging(offset, limit, 15);
         paging.setTotal(total);
         paging.setHasMore(total > (paging.getOffset() + paging.getLimit()));
-        List<StudentModel> studentModels = studentBiz.getTodayWillStudentPaging(offset, limit);
+        List<StudentModel> studentModels = studentBiz.getStudentQueryPaging(id, name, phone, offset, limit);
         return ImmutableMap.<String, Object>builder().put("data", studentModels).put("paging", paging).build();
     }
-
 }

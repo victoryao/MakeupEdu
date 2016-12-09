@@ -47,4 +47,13 @@ public class StudentService {
     public int getTodayWillStudentCount() {
         return studentDAO.getTodayWillStudentCount();
     }
+
+    public int getStudentQueryCount(int id, String name, long phone) {
+        return studentDAO.getStudentQueryCount(id, name, phone);
+    }
+
+    public List<StudentModel> getStudentQueryPaging(int id, String name, long phone, int offset, int limit) {
+        return studentDAO.getStudentQueryPaging(id, name, phone, offset, limit);
+    }
+
 }

@@ -29,4 +29,18 @@ public interface IStudentDAO {
 
     @Select("select count(1) from student where status = 2 and will_date = now()")
     int getTodayWillStudentCount();
+
+    @Select({"<script>", "select `name`, `gender`, `age`, `phone`,  `qq`, `is_work` as isWork, `job_sort` as jobSort, `created`, `modified`  from student ",
+            "where 1=1  <if test='id != 0'> and id = #{id}</if>", "<if test='name != null'> and name = #{name}</if>",
+            "<if test='phone != 0'> and phone = #{phone}</if>", "limit #{offset}, #{limit}",
+            "</script>"})
+    List<StudentModel> getStudentQueryPaging(@Param("id") int id, @Param("name") String name, @Param("phone") long phone, @Param("offset") int offset, @Param("limit") int limit);
+
+    @Select({"<script>", "select count(1)  from student ",
+            "where 1=1  <if test='id != 0'> and id = #{id}</if>", "<if test='name != null'> and name = #{name}</if>",
+            "<if test='phone != 0'> and phone = #{phone}</if>",
+            "</script>"})
+    int getStudentQueryCount(@Param("id") int id, @Param("name") String name, @Param("phone") long phone);
+
+
 }

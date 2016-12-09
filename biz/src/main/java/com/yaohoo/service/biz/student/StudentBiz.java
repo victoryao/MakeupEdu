@@ -80,8 +80,12 @@ public class StudentBiz {
         return studentService.getTodayWillStudentCount();
     }
 
-    public List<StudentModel> getStudentQueryPaging(int offset, int limit) {
-        return studentService.getTodayWillStudentPaging(offset, limit);
+    public List<StudentModel> getStudentQueryPaging(int id, String name, long phone, int offset, int limit) {
+        return studentService.getStudentQueryPaging(id, name, phone, offset, limit);
+    }
+
+    public int getStudentQueryCount(int id, String name, long phone) {
+        return studentService.getStudentQueryCount(id, name, phone);
     }
 
 }
