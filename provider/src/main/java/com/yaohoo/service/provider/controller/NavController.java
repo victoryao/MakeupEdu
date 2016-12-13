@@ -24,5 +24,14 @@ public class NavController {
         return "/student/stu_register";
     }
 
+    @RequestMapping("/client/main")
+    public String toMainPage() {
+        return "/client/main";
+    }
+
+    @RequestMapping("/student/manager/home")
+    public String toStudentManagerMainPage() {
+        return "/stumanager/manager_home";
+    }
 
 }

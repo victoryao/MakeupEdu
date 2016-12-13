@@ -1,9 +1,20 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-    <title>2功能列表</title>
+    <title>功能列表</title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <script language="javascript" src="/js/jquery.js"></script>
     <link rel="stylesheet" type="text/css" href="/css/style.css"/>
+    <script>
+        $(function () {
+            $('.undone').click(function () {
+                alert('未开放，敬请期待！');
+                return false;
+
+            });
+
+        });
+    </script>
 </head>
 
 <body>
@@ -13,14 +24,14 @@
 </div>
 <div class="wh_content">
     <a class="wh_ic_1" href="/student/stuInfoHome.do"></a>
-    <a class="wh_ic_2" href=""></a>
-    <a class="wh_ic_3" href=""></a>
-    <a class="wh_ic_4" href=""></a>
-    <a class="wh_ic_5" href=""></a>
-    <a class="wh_ic_6" href=""></a>
-    <a class="wh_ic_7" href=""></a>
-    <a class="wh_ic_9" href=""></a>
-    <a class="wh_ic_10" href=""></a>
+    <a class="wh_ic_2 undone" href="/student/manager/home.do"></a>
+    <a class="wh_ic_3" href="/student/manager/home.do"></a>
+    <a class="wh_ic_4 undone" href=""></a>
+    <a class="wh_ic_5 undone" href=""></a>
+    <a class="wh_ic_6 undone" href=""></a>
+    <a class="wh_ic_7 undone" href=""></a>
+    <a class="wh_ic_9 undone" href=""></a>
+    <a class="wh_ic_10 undone" href=""></a>
 </div>
 
 

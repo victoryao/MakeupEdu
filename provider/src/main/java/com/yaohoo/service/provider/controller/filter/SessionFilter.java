@@ -31,10 +31,14 @@ public class SessionFilter implements Filter {
         HttpServletResponse response = (HttpServletResponse) res;
         String requestURI = request.getRequestURI();
         HttpSession session = request.getSession();
+        if (requestURI.equals("/client/login.do")) {
+            chain.doFilter(req, res);
+        }
         // 如果Session为空，则跳转到指定页面
         if (session == null || session.getAttribute(Constant.sessionCheckKey) == null) {
+            System.out.println("requestURI:" + requestURI);
             if (!requestURI.equals("/user/login.do")) {
-                response.sendRedirect("/client/main.do");
+                response.sendRedirect("/");
             } else {
                 chain.doFilter(req, res);
             }

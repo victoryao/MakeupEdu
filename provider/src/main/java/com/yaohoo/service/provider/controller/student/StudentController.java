@@ -8,6 +8,7 @@ import com.yaohoo.service.common.util.Constant;
 import com.yaohoo.service.common.util.PageView;
 import com.yaohoo.service.common.util.QueryResult;
 import com.yaohoo.service.domain.model.StudentModel;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
@@ -57,8 +58,10 @@ public class StudentController {
             limit = Constant.pageSize;
         }
         PageView<StudentModel> pageView = new PageView<>(limit, page);
+        System.out.println(pageView.getFirstResult() + "-" + pageView.getMaxresult());
         QueryResult<StudentModel> qr = studentBiz.getTodayWillStudentPaging(pageView.getFirstResult(), pageView.getMaxresult());
         pageView.setQueryResult(qr);
+        System.out.println(pageView.getPageindex().getEndindex());
         modelMap.addAttribute("pageView", pageView);
         return "/student/stu_to_follow";
     }
@@ -74,9 +77,13 @@ public class StudentController {
         if (limit > 100) {
             limit = Constant.pageSize;
         }
+        if (StringUtils.isEmpty(name)) {
+            name = null;
+        }
         PageView<StudentModel> pageView = new PageView<>(limit, page);
         QueryResult<StudentModel> qr = studentBiz.getStudentQueryPaging(id, name, phone, StudentStatusEnum.WILL.getValue(), pageView.getFirstResult(), pageView.getMaxresult());
         pageView.setQueryResult(qr);
+        System.out.println(pageView.getPageindex().getEndindex());
         modelMap.addAttribute("pageView", pageView);
         return "/student/stu_follow_query";
     }

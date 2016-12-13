@@ -3,12 +3,31 @@
 <head>
     <title>首页-登录页面</title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <script language="javascript" src="/js/jquery.js"></script>
     <link rel="stylesheet" type="text/css" href="/css/style.css"/>
     <style>
         body {
             background: url(/images/bg.jpg) top center;
         }
     </style>
+
+    <script>
+        $(function(){
+            $('.wh_lg').click(function(){
+                var userName=$('input[name="userName"]').val();
+                var password=$('input[name="password"]').val();
+                if(userName=="请输入用户名"){
+                    alert('请输入用户名！');
+                    return false;
+                }
+                if(password=="请输入密码"){
+                    alert('请输入密码');
+                    return false;
+                }
+            });
+
+        });
+    </script>
 </head>
 
 <body>

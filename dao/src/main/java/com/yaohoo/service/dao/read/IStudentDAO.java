@@ -27,10 +27,10 @@ public interface IStudentDAO {
     @Select("select `id`, `name`, `gender`, `age`, `phone`,  `qq`, `is_work` as isWork, `job_sort` as jobSort, `created`, `modified` from student where status = 2 and will_date = curdate() limit #{offset}, #{limit}")
     List<StudentModel> getTodayWillStudentPaging(@Param("offset") int offset, @Param("limit") int limit);
 
-    @Select("select count(1) from student where status = 2 and will_date = now()")
+    @Select("select count(1) from student where status = 2 and will_date = curdate()")
     int getTodayWillStudentCount();
 
-    @Select({"<script>", "select `name`, `gender`, `age`, `phone`,  `qq`, `is_work` as isWork, `job_sort` as jobSort, `created`, `modified`  from student ",
+    @Select({"<script>", "select `id`, `name`, `gender`, `age`, `phone`,  `qq`, `is_work` as isWork, `job_sort` as jobSort, `created`, `modified`  from student ",
             "where status= #{status}", "<if test='id != 0'> and id = #{id}</if>", "<if test='name != null'> and name = #{name}</if>",
             "<if test='phone != 0'> and phone = #{phone}</if>", "limit #{offset}, #{limit}",
             "</script>"})
