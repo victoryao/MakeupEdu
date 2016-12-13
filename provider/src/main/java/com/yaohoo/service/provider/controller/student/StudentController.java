@@ -2,8 +2,14 @@ package com.yaohoo.service.provider.controller.student;
 
 import com.google.common.collect.ImmutableMap;
 import com.yaohoo.service.biz.student.StudentBiz;
+import com.yaohoo.service.common.enums.StudentStatusEnum;
 import com.yaohoo.service.common.util.APIUtils;
+import com.yaohoo.service.common.util.Constant;
+import com.yaohoo.service.common.util.PageView;
+import com.yaohoo.service.common.util.QueryResult;
 import com.yaohoo.service.domain.model.StudentModel;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
@@ -14,7 +20,7 @@ import java.util.Map;
 /**
  * Created by yaoqiang on 2016/11/27.
  */
-@RestController
+@Controller
 public class StudentController {
 
     @Resource
@@ -43,26 +49,35 @@ public class StudentController {
     }
 
     @RequestMapping(value = "/willdate/list.do", method = RequestMethod.GET)
-    public Map<String, Object> getTodayWillStudentPaging(@RequestParam(required = false, defaultValue = "0") int offset, @RequestParam(required = false, defaultValue = "10") int limit) {
-        int total = studentBiz.getTodayWillStudentCount();
-        APIUtils.Paging paging = APIUtils.makePaging(offset, limit, 15);
-        paging.setTotal(total);
-        paging.setHasMore(total > (paging.getOffset() + paging.getLimit()));
-        List<StudentModel> studentModels = studentBiz.getTodayWillStudentPaging(offset, limit);
-        return ImmutableMap.<String, Object>builder().put("data", studentModels).put("paging", paging).build();
+    public Object getTodayWillStudentPaging(
+            @RequestParam(required = false, defaultValue = "1") int page,
+            @RequestParam(required = false, defaultValue = "10") int limit,
+            ModelMap modelMap) {
+        if (limit > 100) {
+            limit = Constant.pageSize;
+        }
+        PageView<StudentModel> pageView = new PageView<>(limit, page);
+        QueryResult<StudentModel> qr = studentBiz.getTodayWillStudentPaging(pageView.getFirstResult(), pageView.getMaxresult());
+        pageView.setQueryResult(qr);
+        modelMap.addAttribute("pageView", pageView);
+        return "/student/stu_to_follow";
     }
 
     @RequestMapping(value = "/student/list.do", method = RequestMethod.GET)
-    public Map<String, Object> getStudentQueryPaging(
+    public Object getStudentQueryPaging(
             @RequestParam(required = false, defaultValue = "0") int id,
             @RequestParam(required = false) String name,
             @RequestParam(required = false, defaultValue = "0") long phone,
-            @RequestParam(required = false, defaultValue = "0") int offset, @RequestParam(required = false, defaultValue = "10") int limit) {
-        int total = studentBiz.getStudentQueryCount(id, name, phone);
-        APIUtils.Paging paging = APIUtils.makePaging(offset, limit, 15);
-        paging.setTotal(total);
-        paging.setHasMore(total > (paging.getOffset() + paging.getLimit()));
-        List<StudentModel> studentModels = studentBiz.getStudentQueryPaging(id, name, phone, offset, limit);
-        return ImmutableMap.<String, Object>builder().put("data", studentModels).put("paging", paging).build();
+            @RequestParam(required = false, defaultValue = "1") int page,
+            @RequestParam(required = false, defaultValue = "10") int limit,
+            ModelMap modelMap) {
+        if (limit > 100) {
+            limit = Constant.pageSize;
+        }
+        PageView<StudentModel> pageView = new PageView<>(limit, page);
+        QueryResult<StudentModel> qr = studentBiz.getStudentQueryPaging(id, name, phone, StudentStatusEnum.WILL.getValue(), pageView.getFirstResult(), pageView.getMaxresult());
+        pageView.setQueryResult(qr);
+        modelMap.addAttribute("pageView", pageView);
+        return "/student/stu_follow_query";
     }
 }

@@ -88,4 +88,19 @@ public class StudentModel {
     public void setStatus(int status) {
         this.status = status;
     }
+
+    @Override
+    public String toString() {
+        return "StudentModel{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", age=" + age +
+                ", gender=" + gender +
+                ", phone=" + phone +
+                ", qq=" + qq +
+                ", isWork=" + isWork +
+                ", jobSort=" + jobSort +
+                ", status=" + status +
+                '}';
+    }
 }

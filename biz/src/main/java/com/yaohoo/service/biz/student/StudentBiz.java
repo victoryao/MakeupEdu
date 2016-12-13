@@ -2,6 +2,7 @@ package com.yaohoo.service.biz.student;
 
 
 import com.alibaba.fastjson.JSON;
+import com.yaohoo.service.common.util.QueryResult;
 import com.yaohoo.service.domain.model.StuQueryModel;
 import com.yaohoo.service.domain.model.StudentInfoModel;
 import com.yaohoo.service.domain.model.StudentModel;
@@ -72,19 +73,29 @@ public class StudentBiz {
         return studentService.updateStudentWillDate(id, date);
     }
 
-    public List<StudentModel> getTodayWillStudentPaging(int offset, int limit) {
-        return studentService.getTodayWillStudentPaging(offset, limit);
+    public QueryResult<StudentModel> getTodayWillStudentPaging(int offset, int limit) {
+        QueryResult<StudentModel> qr = new QueryResult<>();
+        int totalRecord = getTodayWillStudentCount();
+        List<StudentModel> list = studentService.getTodayWillStudentPaging(offset, limit);
+        qr.setResultlist(list);
+        qr.setTotalrecord(totalRecord);
+        return qr;
     }
 
-    public int getTodayWillStudentCount() {
+    private int getTodayWillStudentCount() {
         return studentService.getTodayWillStudentCount();
     }
 
-    public List<StudentModel> getStudentQueryPaging(int id, String name, long phone, int offset, int limit) {
-        return studentService.getStudentQueryPaging(id, name, phone, offset, limit);
+    public QueryResult<StudentModel> getStudentQueryPaging(int id, String name, long phone, int status, int offset, int limit) {
+        QueryResult<StudentModel> qr = new QueryResult<>();
+        int totalRecord = getStudentQueryCount(id, name, phone);
+        List<StudentModel> list = studentService.getStudentQueryPaging(id, name, phone, status, offset, limit);
+        qr.setResultlist(list);
+        qr.setTotalrecord(totalRecord);
+        return qr;
     }
 
-    public int getStudentQueryCount(int id, String name, long phone) {
+    private int getStudentQueryCount(int id, String name, long phone) {
         return studentService.getStudentQueryCount(id, name, phone);
     }
 

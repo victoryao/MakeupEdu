@@ -52,8 +52,8 @@ public class StudentService {
         return studentDAO.getStudentQueryCount(id, name, phone);
     }
 
-    public List<StudentModel> getStudentQueryPaging(int id, String name, long phone, int offset, int limit) {
-        return studentDAO.getStudentQueryPaging(id, name, phone, offset, limit);
+    public List<StudentModel> getStudentQueryPaging(int id, String name, long phone, int status, int offset, int limit) {
+        return studentDAO.getStudentQueryPaging(id, name, phone, status, offset, limit);
     }
 
 }

@@ -14,4 +14,15 @@ public class NavController {
         return "/client/login";
     }
 
+    @RequestMapping("/student/stuInfoHome")
+    public String toStuInfoHomePage() {
+        return "/student/stu_info_home";
+    }
+
+    @RequestMapping("/student/stuRegister")
+    public String toStuRegisterPage() {
+        return "/student/stu_register";
+    }
+
+
 }
