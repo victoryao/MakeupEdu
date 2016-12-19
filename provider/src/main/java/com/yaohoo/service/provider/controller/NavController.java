@@ -34,4 +34,14 @@ public class NavController {
         return "/stumanager/manager_home";
     }
 
+    @RequestMapping("/student/manager/dorm/home")
+    public String toStudentManagerSetDormPage() {
+        return "/stumanager/dorm_home";
+    }
+
+    @RequestMapping("/student/stat/home")
+    public String toStatPage() {
+        return "/stat/stat_home";
+    }
+
 }

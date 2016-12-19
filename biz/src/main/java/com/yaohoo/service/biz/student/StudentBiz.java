@@ -60,6 +60,9 @@ public class StudentBiz {
         stuQueryHisService.addStuQueryHis(queryModel);
     }
 
+    public StudentModel getStudentById(int id) {
+        return studentService.getStudentById(id);
+    }
 
     public StudentRegisterVO getStudentRegisterModelById(int id) {
         StudentRegisterVO sr = new StudentRegisterVO();
@@ -88,15 +91,15 @@ public class StudentBiz {
 
     public QueryResult<StudentModel> getStudentQueryPaging(int id, String name, long phone, int status, int offset, int limit) {
         QueryResult<StudentModel> qr = new QueryResult<>();
-        int totalRecord = getStudentQueryCount(id, name, phone);
+        int totalRecord = getStudentQueryCount(id, name, phone, status);
         List<StudentModel> list = studentService.getStudentQueryPaging(id, name, phone, status, offset, limit);
         qr.setResultlist(list);
         qr.setTotalrecord(totalRecord);
         return qr;
     }
 
-    private int getStudentQueryCount(int id, String name, long phone) {
-        return studentService.getStudentQueryCount(id, name, phone);
+    private int getStudentQueryCount(int id, String name, long phone, int status) {
+        return studentService.getStudentQueryCount(id, name, phone, status);
     }
 
 }

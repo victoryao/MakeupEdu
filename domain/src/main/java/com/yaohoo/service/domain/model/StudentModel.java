@@ -14,8 +14,28 @@ public class StudentModel {
     private int isWork;
     private RemarkModel jobSort;
     private int status;
+    private int dormStatus;
+    private int proStatus;
+    private int classStatus;
+    private String dormId;
+    private String className;
+    private String property;
 
+    public int getProStatus() {
+        return proStatus;
+    }
 
+    public void setProStatus(int proStatus) {
+        this.proStatus = proStatus;
+    }
+
+    public String getProperty() {
+        return property;
+    }
+
+    public void setProperty(String property) {
+        this.property = property;
+    }
 
     public int getId() {
         return id;
@@ -87,6 +107,38 @@ public class StudentModel {
 
     public void setStatus(int status) {
         this.status = status;
+    }
+
+    public int getDormStatus() {
+        return dormStatus;
+    }
+
+    public void setDormStatus(int dormStatus) {
+        this.dormStatus = dormStatus;
+    }
+
+    public String getDormId() {
+        return dormId;
+    }
+
+    public void setDormId(String dormId) {
+        this.dormId = dormId;
+    }
+
+    public int getClassStatus() {
+        return classStatus;
+    }
+
+    public void setClassStatus(int classStatus) {
+        this.classStatus = classStatus;
+    }
+
+    public String getClassName() {
+        return className;
+    }
+
+    public void setClassName(String className) {
+        this.className = className;
     }
 
     @Override

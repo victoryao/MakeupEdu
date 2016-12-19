@@ -9,6 +9,7 @@ public class StudentClassDO {
     private int sId;
     private int tcId;
     private int status;
+    private String className;
 
     public int getId() {
         return id;
@@ -40,5 +41,13 @@ public class StudentClassDO {
 
     public void setStatus(int status) {
         this.status = status;
+    }
+
+    public String getClassName() {
+        return className;
+    }
+
+    public void setClassName(String className) {
+        this.className = className;
     }
 }

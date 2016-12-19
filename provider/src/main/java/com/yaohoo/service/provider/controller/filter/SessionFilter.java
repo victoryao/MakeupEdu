@@ -36,7 +36,6 @@ public class SessionFilter implements Filter {
         }
         // 如果Session为空，则跳转到指定页面
         if (session == null || session.getAttribute(Constant.sessionCheckKey) == null) {
-            System.out.println("requestURI:" + requestURI);
             if (!requestURI.equals("/user/login.do")) {
                 response.sendRedirect("/");
             } else {

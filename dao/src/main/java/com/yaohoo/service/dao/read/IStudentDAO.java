@@ -11,7 +11,7 @@ import java.util.List;
  */
 public interface IStudentDAO {
 
-    @Select("select `name`, `gender`, `age`, `phone`,  `qq`, `is_work` as isWork, `job_sort` as jobSort, `created`, `modified`  from student where id = #{id}")
+    @Select("select `id`, `name`, `gender`, `age`, `phone`,  `qq`, `is_work` as isWork, `job_sort` as jobSort, `created`, `modified`  from student where id = #{id}")
     @Results(value = {
             @Result(column = "jobSort", property = "jobSort", typeHandler = RemarkFieldHandler.class)
     })
@@ -37,10 +37,10 @@ public interface IStudentDAO {
     List<StudentModel> getStudentQueryPaging(@Param("id") int id, @Param("name") String name, @Param("phone") long phone, @Param("status") int status, @Param("offset") int offset, @Param("limit") int limit);
 
     @Select({"<script>", "select count(1)  from student ",
-            "where 1=1  <if test='id != 0'> and id = #{id}</if>", "<if test='name != null'> and name = #{name}</if>",
+            "where status= #{status}", "<if test='id != 0'> and id = #{id}</if>", "<if test='name != null'> and name = #{name}</if>",
             "<if test='phone != 0'> and phone = #{phone}</if>",
             "</script>"})
-    int getStudentQueryCount(@Param("id") int id, @Param("name") String name, @Param("phone") long phone);
+    int getStudentQueryCount(@Param("id") int id, @Param("name") String name, @Param("phone") long phone, @Param("status") int status);
 
 
 }

@@ -1,4 +1,4 @@
-package com.yaohoo.service.common.enums;
+package com.yaohoo.service.domain.model.enums;
 
 /**
  * Created by yaoqiang on 2016/12/11.

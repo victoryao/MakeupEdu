@@ -2,20 +2,21 @@ package com.yaohoo.service.provider.controller.student;
 
 import com.google.common.collect.ImmutableMap;
 import com.yaohoo.service.biz.student.StudentBiz;
-import com.yaohoo.service.common.enums.StudentStatusEnum;
-import com.yaohoo.service.common.util.APIUtils;
 import com.yaohoo.service.common.util.Constant;
 import com.yaohoo.service.common.util.PageView;
 import com.yaohoo.service.common.util.QueryResult;
 import com.yaohoo.service.domain.model.StudentModel;
+import com.yaohoo.service.domain.model.enums.StudentStatusEnum;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.annotation.Resource;
 import java.util.Date;
-import java.util.List;
 import java.util.Map;
 
 /**
@@ -58,10 +59,8 @@ public class StudentController {
             limit = Constant.pageSize;
         }
         PageView<StudentModel> pageView = new PageView<>(limit, page);
-        System.out.println(pageView.getFirstResult() + "-" + pageView.getMaxresult());
         QueryResult<StudentModel> qr = studentBiz.getTodayWillStudentPaging(pageView.getFirstResult(), pageView.getMaxresult());
         pageView.setQueryResult(qr);
-        System.out.println(pageView.getPageindex().getEndindex());
         modelMap.addAttribute("pageView", pageView);
         return "/student/stu_to_follow";
     }
@@ -83,8 +82,9 @@ public class StudentController {
         PageView<StudentModel> pageView = new PageView<>(limit, page);
         QueryResult<StudentModel> qr = studentBiz.getStudentQueryPaging(id, name, phone, StudentStatusEnum.WILL.getValue(), pageView.getFirstResult(), pageView.getMaxresult());
         pageView.setQueryResult(qr);
-        System.out.println(pageView.getPageindex().getEndindex());
         modelMap.addAttribute("pageView", pageView);
         return "/student/stu_follow_query";
     }
+
+
 }

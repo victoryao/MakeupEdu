@@ -10,6 +10,6 @@ import java.util.List;
 public interface IStudentClassDAO {
 
     @Select("select `tc_id` as tcId from `student_class_relation` where s_id  = #{sId}")
-    List<Integer> getStudentClassRelations(int sId);
+    public List<Integer> getStudentClassRelations(int sId);
 
 }

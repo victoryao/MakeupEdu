@@ -1,7 +1,7 @@
 package com.yaohoo.service.biz.student;
 
 import com.yaohoo.service.domain.model.dos.StudentClassDO;
-import com.yaohoo.service.service.student.StudentClassService;
+import com.yaohoo.service.service.student.ClassService;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -13,7 +13,7 @@ import javax.annotation.Resource;
 public class StudentClassBiz {
 
     @Resource
-    private StudentClassService studentClassService;
+    private ClassService studentClassService;
 
     boolean addWriteStudentClassRelation(StudentClassDO sm) {
         return studentClassService.addWriteStudentClassRelation(sm);
