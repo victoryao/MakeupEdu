@@ -12,7 +12,7 @@ public class StudentModel {
     private long phone;
     private int qq;
     private int isWork;
-    private RemarkModel jobSort;
+    private String jobSort;
     private int status;
     private int dormStatus;
     private int proStatus;
@@ -93,11 +93,11 @@ public class StudentModel {
         this.isWork = isWork;
     }
 
-    public RemarkModel getJobSort() {
+    public String getJobSort() {
         return jobSort;
     }
 
-    public void setJobSort(RemarkModel jobSort) {
+    public void setJobSort(String jobSort) {
         this.jobSort = jobSort;
     }
 

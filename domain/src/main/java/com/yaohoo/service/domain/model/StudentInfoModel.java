@@ -8,13 +8,13 @@ import java.util.List;
 public class StudentInfoModel {
     private int id;
     private int stuId;
-    private List<RemarkModel> clsInterests;
-    private List<RemarkModel> clsTimes;
-    private List<RemarkModel> approachs;
-    private List<RemarkModel> learnGoals;
-    private List<RemarkModel> learnTimes;
-    private List<RemarkModel> expectations;
-    private List<RemarkModel> reasons;
+    private String clsInterests;
+    private String clsTimes;
+    private String approachs;
+    private String learnGoals;
+    private String learnTimes;
+    private String expectations;
+    private String reasons;
 
 
     public int getId() {
@@ -33,59 +33,59 @@ public class StudentInfoModel {
         this.stuId = stuId;
     }
 
-    public List<RemarkModel> getClsInterests() {
+    public String getClsInterests() {
         return clsInterests;
     }
 
-    public void setClsInterests(List<RemarkModel> clsInterests) {
+    public void setClsInterests(String clsInterests) {
         this.clsInterests = clsInterests;
     }
 
-    public List<RemarkModel> getClsTimes() {
+    public String getClsTimes() {
         return clsTimes;
     }
 
-    public void setClsTimes(List<RemarkModel> clsTimes) {
+    public void setClsTimes(String clsTimes) {
         this.clsTimes = clsTimes;
     }
 
-    public List<RemarkModel> getApproachs() {
+    public String getApproachs() {
         return approachs;
     }
 
-    public void setApproachs(List<RemarkModel> approachs) {
+    public void setApproachs(String approachs) {
         this.approachs = approachs;
     }
 
-    public List<RemarkModel> getLearnGoals() {
+    public String getLearnGoals() {
         return learnGoals;
     }
 
-    public void setLearnGoals(List<RemarkModel> learnGoals) {
+    public void setLearnGoals(String learnGoals) {
         this.learnGoals = learnGoals;
     }
 
-    public List<RemarkModel> getLearnTimes() {
+    public String getLearnTimes() {
         return learnTimes;
     }
 
-    public void setLearnTimes(List<RemarkModel> learnTimes) {
+    public void setLearnTimes(String learnTimes) {
         this.learnTimes = learnTimes;
     }
 
-    public List<RemarkModel> getExpectations() {
+    public String getExpectations() {
         return expectations;
     }
 
-    public void setExpectations(List<RemarkModel> expectations) {
+    public void setExpectations(String expectations) {
         this.expectations = expectations;
     }
 
-    public List<RemarkModel> getReasons() {
+    public String getReasons() {
         return reasons;
     }
 
-    public void setReasons(List<RemarkModel> reasons) {
+    public void setReasons(String reasons) {
         this.reasons = reasons;
     }
 }

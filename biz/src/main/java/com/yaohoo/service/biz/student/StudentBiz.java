@@ -35,7 +35,7 @@ public class StudentBiz {
      * 学生咨询登记表
      */
     @Transactional
-    public void addStudentregister(String json) {
+    public Integer addStudentregister(String json) {
         StudentRegisterModel registerModel = JSON.parseObject(json, StudentRegisterModel.class);
         StudentModel studentModel = registerModel.getStudent();
         StudentInfoModel studentInfoModel = registerModel.getStuInfo();
@@ -45,10 +45,11 @@ public class StudentBiz {
         studentInfoService.addStudentInfo(studentInfoModel);
         queryModel.setStuId(studentModel.getId());
         stuQueryHisService.addStuQueryHis(queryModel);
+        return studentModel.getId();
     }
 
     @Transactional
-    public void updateStudentregister(String json) {
+    public Integer updateStudentregister(String json) {
         StudentRegisterModel registerModel = JSON.parseObject(json, StudentRegisterModel.class);
         StudentModel studentModel = registerModel.getStudent();
         StudentInfoModel studentInfoModel = registerModel.getStuInfo();
@@ -58,6 +59,7 @@ public class StudentBiz {
         studentInfoService.updateStudentInfo(studentInfoModel);
         queryModel.setStuId(studentModel.getId());
         stuQueryHisService.addStuQueryHis(queryModel);
+        return studentModel.getId();
     }
 
     public StudentModel getStudentById(int id) {

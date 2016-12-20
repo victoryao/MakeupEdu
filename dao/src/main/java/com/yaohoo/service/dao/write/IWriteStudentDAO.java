@@ -15,12 +15,12 @@ import java.util.Date;
 public interface IWriteStudentDAO {
 
     @Insert("INSERT INTO `student` (`name`, `gender`, `age`, `phone`,  `qq`, `is_work`, `job_sort`, `status`, `created`, `modified`) VALUES " +
-            "(#{name}, #{gender}, #{age}, #{phone},  #{qq}, #{isWork}, #{jobSort,typeHandler=com.yaohoo.service.dao.provider.RemarkHandler}, #{status}, now(), now())")
+            "(#{name}, #{gender}, #{age}, #{phone},  #{qq}, #{isWork}, #{jobSort}, #{status}, now(), now())")
     @SelectKey(statement = "SELECT LAST_INSERT_ID() as id", keyProperty = "id", before = false, resultType = Integer.class)
     boolean addStudent(StudentModel sm);
 
     @Update("update student set name = #{name}, gender = #{gender}, age = #{age}, phone = #{phone}, qq = #{qq}, is_work = #{isWork}, " +
-            "job_sort = #{jobSort,typeHandler=com.yaohoo.service.dao.provider.RemarkHandler}, status = #{status}, modified = now() where id = #{id}")
+            "job_sort = #{jobSort}, status = #{status}, modified = now() where id = #{id}")
     boolean updateStudent(StudentModel sm);
 
     @Update("update student set will_date =  #{date} where id = #{id}")

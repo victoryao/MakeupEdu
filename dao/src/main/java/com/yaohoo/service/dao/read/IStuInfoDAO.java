@@ -13,16 +13,8 @@ import org.apache.ibatis.annotations.Select;
  */
 public interface IStuInfoDAO {
 
-    @Select("select `stu_id` as stuId, `cls_interest`, `cls_time`, `approach`,  `learn_goal`, `learn_time`, `expectation`, `reason`, `created`, `modified`  from stu_info where stu_id = #{id}")
-    @Results(value = {
-            @Result(column = "cls_interest", property = "clsInterests", typeHandler = RemarkFieldHandler.class),
-            @Result(column = "cls_time", property = "clsTimes", typeHandler = RemarkListFieldHandler.class),
-            @Result(column = "approach", property = "approachs", typeHandler = RemarkListFieldHandler.class),
-            @Result(column = "learn_goal", property = "learnGoals", typeHandler = RemarkListFieldHandler.class),
-            @Result(column = "learn_time", property = "learnTimes", typeHandler = RemarkListFieldHandler.class),
-            @Result(column = "expectation", property = "expectations", typeHandler = RemarkListFieldHandler.class),
-            @Result(column = "reason", property = "reasons", typeHandler = RemarkListFieldHandler.class)
-    })
+    @Select("select `stu_id` as stuId, `cls_interest` as clsInterests, `cls_time` as clsTimes, `approach` as approachs,  `learn_goal` as learnGoals," +
+            "`learn_time` as learnTimes, `expectation` as learnGoals, `reason` as reasons, `created`, `modified`  from stu_info where stu_id = #{id}")
     StudentInfoModel getStudentInfoById(@Param("id") int id);
 
 

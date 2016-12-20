@@ -11,17 +11,17 @@ import org.apache.ibatis.annotations.Update;
 public interface IWriteStuInfoDAO {
 
     @Insert("INSERT INTO `stu_info` (`stu_id`, `cls_interest`, `cls_time`, `approach`,  `learn_goal`, `learn_time`, `expectation`, `reason`, `created`, `modified`) VALUES " +
-            "(#{stuId}, #{clsInterests,typeHandler=com.yaohoo.service.dao.provider.RemarkListHandler}, #{clsTimes,typeHandler=com.yaohoo.service.dao.provider.RemarkListHandler}," +
-            " #{approachs,typeHandler=com.yaohoo.service.dao.provider.RemarkListHandler}, #{learnGoals,typeHandler=com.yaohoo.service.dao.provider.RemarkListHandler},  " +
-            "#{learnTimes,typeHandler=com.yaohoo.service.dao.provider.RemarkListHandler}, #{expectations,typeHandler=com.yaohoo.service.dao.provider.RemarkListHandler}," +
-            " #{reasons,typeHandler=com.yaohoo.service.dao.provider.RemarkListHandler}, now(), now())")
+            "(#{stuId}, #{clsInterests}, #{clsTimes}," +
+            " #{approachs}, #{learnGoals},  " +
+            "#{learnTimes}, #{expectations}," +
+            " #{reasons}, now(), now())")
     @SelectKey(statement = "SELECT LAST_INSERT_ID() as id", keyProperty = "id", before = false, resultType = Integer.class)
     boolean addStudentInfo(StudentInfoModel si);
 
-    @Update("update stu_info set stu_id = #{stuId}, cls_interest = #{clsInterests,typeHandler=com.yaohoo.service.dao.provider.RemarkListHandler}," +
-            "cls_time =  #{clsTimes,typeHandler=com.yaohoo.service.dao.provider.RemarkListHandler}, approach =#{approachs,typeHandler=com.yaohoo.service.dao.provider.RemarkListHandler}," +
-            "learn_goal = #{learnGoals,typeHandler=com.yaohoo.service.dao.provider.RemarkListHandler}, learn_time=#{learnTimes,typeHandler=com.yaohoo.service.dao.provider.RemarkListHandler}," +
-            "expectation = #{expectations,typeHandler=com.yaohoo.service.dao.provider.RemarkListHandler}, reason = #{reasons,typeHandler=com.yaohoo.service.dao.provider.RemarkListHandler}," +
+    @Update("update stu_info set stu_id = #{stuId}, cls_interest = #{clsInterests}," +
+            "cls_time =  #{clsTimes}," +
+            "learn_goal = #{learnGoals}, learn_time=#{learnTimes}," +
+            "expectation = #{expectations}, reason = #{reasons}," +
             "modified = now() where id = #{id}")
     boolean updateStudentInfo(StudentInfoModel si);
 }

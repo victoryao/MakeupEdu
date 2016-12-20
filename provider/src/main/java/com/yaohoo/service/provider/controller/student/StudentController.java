@@ -28,28 +28,6 @@ public class StudentController {
     @Resource
     private StudentBiz studentBiz;
 
-    @RequestMapping(value = "/register.do", method = RequestMethod.POST)
-    public Map<String, Object> addStudentregister(@RequestParam String json) {
-        studentBiz.addStudentregister(json);
-        return ImmutableMap.<String, Object>builder().put("data", "success").build();
-    }
-
-    @RequestMapping(value = "/register.do", method = RequestMethod.PUT)
-    public Map<String, Object> modifyStudentregister(@RequestParam String json) {
-        studentBiz.updateStudentregister(json);
-        return ImmutableMap.<String, Object>builder().put("data", "success").build();
-    }
-
-    @RequestMapping(value = "/register/{id}.do", method = RequestMethod.GET)
-    public Map<String, Object> getStudentregister(@PathVariable int id) {
-        return ImmutableMap.<String, Object>builder().put("data", studentBiz.getStudentRegisterModelById(id)).build();
-    }
-
-    @RequestMapping(value = "/willdate/{id}.do", method = RequestMethod.POST)
-    public Map<String, Object> updateStudentWillDate(@PathVariable int id, @RequestParam long willDate) {
-        return ImmutableMap.<String, Object>builder().put("data", studentBiz.updateStudentWillDate(id, new Date(willDate))).build();
-    }
-
     @RequestMapping(value = "/willdate/list.do", method = RequestMethod.GET)
     public Object getTodayWillStudentPaging(
             @RequestParam(required = false, defaultValue = "1") int page,
@@ -85,6 +63,5 @@ public class StudentController {
         modelMap.addAttribute("pageView", pageView);
         return "/student/stu_follow_query";
     }
-
 
 }

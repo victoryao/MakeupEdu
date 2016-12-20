@@ -11,7 +11,7 @@ import java.util.List;
  */
 public interface IStuQueryDAO {
 
-    @Select("select  `stu_id`, `user_id`, `user_name`, `remark`,  `created` from `stu_query_his` where stu_id = #{id} order by created desc")
+    @Select("select  `stu_id` as stuId, `user_id` as userId, `user_name` as userName, `remark`, `created` from `stu_query_his` where stu_id = #{id} order by created desc")
     List<StuQueryModel> getStuQueryHisList(@Param("id") int id);
 
 
