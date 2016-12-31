@@ -1,9 +1,12 @@
-package com.yaohoo.service.service.student;
+package com.yaohoo.service.service.classes;
 
+import com.yaohoo.service.dao.read.ClassDAO;
 import com.yaohoo.service.dao.read.IStuClassDAO;
 import com.yaohoo.service.dao.write.IWriteStudentClassDAO;
 import com.yaohoo.service.domain.model.StudentModel;
+import com.yaohoo.service.domain.model.dos.ClassDO;
 import com.yaohoo.service.domain.model.dos.StudentClassDO;
+import com.yaohoo.service.domain.model.dos.TeacherClassDO;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -19,6 +22,20 @@ public class ClassService {
     private IWriteStudentClassDAO writeStudentClassDAO;
     @Resource
     private IStuClassDAO teacherClassDAO;
+    @Resource
+    private ClassDAO classDAO;
+
+    public List<TeacherClassDO> getTeacherClassesQuery(int tId, int classTimeType, int classType, int offset, int limit) {
+        return teacherClassDAO.getTeacherClassesQuery(tId, classTimeType, classType, offset, limit);
+    }
+
+    public int getTeacherClassesQueryCount(int tId, int classTimeType, int classType) {
+        return teacherClassDAO.getTeacherClassesQueryCount(tId, classTimeType, classType);
+    }
+
+    public TeacherClassDO getTeacherClassesById(int tcId) {
+        return teacherClassDAO.getTeacherClassesById(tcId);
+    }
 
     public boolean addWriteStudentClassRelation(StudentClassDO sm) {
         return writeStudentClassDAO.addStudentClassRelation(sm);
@@ -32,7 +49,11 @@ public class ClassService {
         return teacherClassDAO.getClasseRelationBySId(sId);
     }
 
-    public List<StudentModel> getStudentClassQueryPaging(int sId, String sName, long sPhone, int status, int offset, int limit) {
+    public StudentClassDO getClasseRelationBySIdTcId(int sId, int tcId) {
+        return teacherClassDAO.getClasseRelationBySIdTcId(sId, tcId);
+    }
+
+    public List<StudentClassDO> getStudentClassQueryPaging(int sId, String sName, long sPhone, int status, int offset, int limit) {
         return teacherClassDAO.getStudentClassQueryPaging(sId, sName, sPhone, status, offset, limit);
     }
 
@@ -40,5 +61,7 @@ public class ClassService {
         return teacherClassDAO.getStudentClassQueryCount(sId, sName, sPhone, status);
     }
 
-
+    public ClassDO getClassById(int id) {
+        return classDAO.getClassById(id);
+    }
 }

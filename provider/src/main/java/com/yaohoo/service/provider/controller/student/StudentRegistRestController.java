@@ -19,7 +19,11 @@ public class StudentRegistRestController {
 
     @RequestMapping(value = "/register.do", method = RequestMethod.POST)
     public Map<String, Object> addStudentregister(@RequestParam String json) {
-        return ImmutableMap.<String, Object>builder().put("data", studentBiz.addStudentregister(json)).build();
+        try {
+            return ImmutableMap.<String, Object>builder().put("data", studentBiz.addStudentregister(json)).build();
+        } catch (Exception e) {
+            return ImmutableMap.<String, Object>builder().put("data", "error").build();
+        }
     }
 
     @RequestMapping(value = "/register.do", method = RequestMethod.PUT)

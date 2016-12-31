@@ -23,10 +23,11 @@
         学号：${student.id}&nbsp;&nbsp;&nbsp;学员姓名：${student.name}&nbsp;&nbsp;&nbsp;学员电话：${student.phone}</div>
     <div class="wh_sch">
         <div style="float:left;line-height:38px;font-size:14px;">宿舍类型</div>
-        <form style="float:left;margin-left:20px;" action="/student/manager/dorm/list.do?sId=${student.id}&type=add">
+        <form style="float:left;margin-left:20px;" action="/student/manager/dorm/list.do">
+            <input type="hidden" name="sId" value="${student.id}">
+            <input type="hidden" name="type" value="add">
             <select style="width:200px;" name="totalCount">
-                <option value="0" selected>宿舍类型</option>
-                <option value="1">单人间</option>
+                <option value="1" selected>单人间</option>
                 <option value="2">双人间</option>
                 <option value="4">四人间</option>
                 <option value="8">八人间</option>
@@ -52,7 +53,12 @@
                 <td>${dorm.dId}</td>
                 <td>${dorm.headCount}/${dorm.totalCount}</td>
                 <td>${dorm.fee}</td>
-                <td><a class="wh_ta_1" href="/student/manager/dorm/add.do?sId=${student.id}&dId=${dorm.id}" style="width:80px;">确认入住</a></td>
+                <td>
+                    <#if (dorm.headCount < dorm.totalCount)!>
+                        <a class="wh_ta_1" href="/student/manager/dorm/add.do?sId=${student.id}&dId=${dorm.id}"
+                           style="width:80px;">确认入住</a>
+                    </#if>
+                </td>
             </tr>
         </#list>
         </table>

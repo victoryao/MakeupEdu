@@ -152,15 +152,15 @@
                 </tr>
             </table>
 
-            <input class="wh_c5_su1" type="button" value="正式报名" onClick="wh_tanchu(2);"/>
-            <input class="wh_c5_su2" type="button" value="意向学员" onClick="wh_tanchu(1);"/>
+            <input class="wh_c5_su1" type="button" value="正式报名" onClick="wh_tanchu(1);"/>
+            <input class="wh_c5_su2" type="button" value="意向学员" onClick="wh_tanchu(2);"/>
             <input class="wh_c5_su3" type="button" value="BACK"/>
         </form>
         <div id="mydiv"></div>
     </div>
 </div>
 
-<div class="wh_tanchu1">
+<div class="wh_tanchu2">
     <div class="wh_tanchu_1">
         <div class="wt1_t1">该学员已经转为意向学员</div>
         <div class="wt1_t2">请输入下次需要跟进的时间</div>
@@ -169,26 +169,29 @@
     </div>
 </div>
 
-<div class="wh_tanchu2">
+<div class="wh_tanchu1">
     <div class="wh_tanchu_1">
         <div class="wt1_t1">恭喜您报名成功</div>
-        <div class="wt1_t2">您的学号为：<span id = "stuId"></span></div>
+        <div class="wt1_t2">您的学号为：<span id="stuId"></span></div>
         接下来您可以&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br/>
-        <input class="wt1_t4" type="button" id = "toClass"value="选择课程"/>
-        <input class="wt1_t4" type="button" id = "toProduct" value="选择产品"/>
-        <input class="wt1_t4" type="button" id = "toDorm" value="选择宿舍"/> <br/>
-        <input class="wt1_t3" type="button" value="BACK" onClick="wh_tanchu_close(2);"/>
+        <input class="wt1_t4" type="button" id="toClass" value="选择课程"/>
+        <input class="wt1_t4" type="button" id="toProduct" value="选择产品"/>
+        <input class="wt1_t4" type="button" id="toDorm" value="选择宿舍"/> <br/>
+        <input class="wt1_t3" type="button" value="BACK" onClick="wh_tanchu_close(1);"/>
     </div>
 </div>
 <script>
     function wh_tanchu(num) {
-        var json = tanchu()
-        $.post("/register.do?json="+json,function (data) {
+        var json = tanchu();
+        $.post("/register.do?json=" + json, function (data) {
             var jsonObj = eval(data);
+            if (jsonObj.data == 'error') {
+                alert("出现错误！");
+                return;
+            }
             $("#stuId").text(jsonObj.data);
+            $(".wh_tanchu" + num).show();
         });
-        $(".wh_tanchu" + num).show();
-
     }
 
     function wh_tanchu_close(num) {

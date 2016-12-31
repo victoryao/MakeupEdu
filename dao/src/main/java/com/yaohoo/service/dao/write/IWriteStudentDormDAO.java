@@ -10,8 +10,7 @@ import org.apache.ibatis.annotations.Update;
  */
 public interface IWriteStudentDormDAO {
 
-    @Insert("INSERT INTO `student_dorm_relation` (`s_id`, `d_id`, `created`, `modified`) VALUES " +
-            "(#{sId}, #{dId},  now(), now())")
+    @Insert("insert into `student_dorm_relation` (s_id, d_id, begin_time, created, modified) values (#{sId}, #{dId}, now(), now(), now())")
     @SelectKey(statement = "SELECT LAST_INSERT_ID() as id", keyProperty = "id", before = false, resultType = Integer.class)
     boolean addStudentDormRelation(StudentDormDO sm);
 

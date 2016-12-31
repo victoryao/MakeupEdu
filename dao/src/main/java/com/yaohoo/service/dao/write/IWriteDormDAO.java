@@ -25,13 +25,15 @@ public interface IWriteDormDAO {
     @Update("update `student_dorm_relation` set  `d_id` = #{dId}, `modified` = now() where s_id = #{sId}")
     boolean updateStudentDorm(@Param("sId") int sId, @Param("dId") int dId);
 
-    @Update("update `dorm` set  `head_count` = head_count + 1 , `modified` = now() where d_id = #{dId}")
-    boolean incrDormHeadCount(@Param("dId") int dId);
+    @Update("update `student_dorm_relation` set  `status` = 1, `modified` = now() where id = #{id}")
+    boolean cancelStudentDorm(@Param("id") int id);
 
-    @Update("update `dorm` set  `head_count` = head_count - 1 , `modified` = now() where d_id = #{dId}")
-    boolean decrDormHeadCount(@Param("dId") int dId);
 
-    @Update("insert into `student_dorm_relation` (s_id, d_id, created, modified) values (#{sId}, #{dId}, now(), now())")
-    boolean addStudentDorm(@Param("sId") int sId, @Param("dId") int dId);
+    @Update("update `dorm` set  `head_count` = head_count + 1 , `modified` = now() where id = #{id}")
+    boolean incrDormHeadCount(@Param("id") int id);
+
+    @Update("update `dorm` set  `head_count` = head_count - 1 , `modified` = now() where id = #{id}")
+    boolean decrDormHeadCount(@Param("id") int id);
+
 
 }

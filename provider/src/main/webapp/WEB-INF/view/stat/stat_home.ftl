@@ -12,8 +12,8 @@
     <div class="wht_right">用户名: admin <a href="">注销</a></div>
 </div>
 <div class="wh_content" style="margin-top:100px;">
-    <a class="wh_ic_22" href="" style="margin-left:220px;"></a>
-    <a class="wh_ic_23" href=""></a>
+    <a class="wh_ic_22" href="/student/stat/income.do" style="margin-left:220px;"></a>
+    <a class="wh_ic_23" href="/student/stat/student.do"></a>
 
     <input class="wh_ic_b1" type="button" value="BACK">
 </div>

@@ -28,7 +28,7 @@
     <a class="wh_ic_3" href="/student/manager/home.do"></a>
     <a class="wh_ic_4 undone" href=""></a>
     <a class="wh_ic_5 undone" href=""></a>
-    <a class="wh_ic_6 undone" href=""></a>
+    <a class="wh_ic_6" href="/student/manager/home/list.do?type=dorm"></a>
     <a class="wh_ic_7 undone" href=""></a>
     <a class="wh_ic_9 undone" href=""></a>
     <a class="wh_ic_10" href="/student/stat/home.do"></a>

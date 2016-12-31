@@ -14,6 +14,15 @@
         function topage(page) {
             var form = document.forms[0];
             form.page.value = page;
+            if ($('input[name="id"]').val() == "请输入学生学号") {
+                $("#id").val("");
+            }
+            if ($('input[name="name"]').val() == "请输入学生姓名") {
+                $("#name").val("");
+            }
+            if ($('input[name="phone"]').val() == "请输入学生电话") {
+                $("#phone").val("");
+            }
             form.submit();
         }
 
@@ -28,6 +37,7 @@
 <div class="wh_content1">
     <h1 class="wh_h1">意向学员信息查询</h1>
     <form action="/student/list.do">
+        <input type="hidden" name="page" id="page"/>
         <div class="wh_sch" style="width:600px; margin:0 auto;">
             <input type="text" value="请输入学生姓名" onFocus="if (this.value=='请输入学生姓名') this.value=''"
                    onBlur="if (this.value==''){this.value='请输入学生姓名'}" name="name"/>
@@ -37,7 +47,6 @@
         </div>
         <div class="wh_tab">
             <table cellspacing="0" style="width:700px; margin:0 auto;">
-                <input type="hidden" name="page" id="page"/>
                 <thead>
                 <tr class="wh_t1">
                     <td>编号</td>
@@ -64,18 +73,27 @@
 
 <script>
     $(function () {
+
         $('.wh_su').click(function () {
-            var name = $('input[name="name"]').val();
+            var xing = $('input[name="name"]').val();
             var phone = $('input[name="phone"]').val();
-            if (name == "请输入学生姓名") {
-                alert('请输入学生姓名！');
-                return false;
+            var xuehao = $('input[name="id"]').val();
+
+            if (xuehao == "请输入学生学号") {
+                $('input[name="id"]').val("");
             }
+
+            if (xing == "请输入学生姓名") {
+                $('input[name="name"]').val("");
+            }
+
+
             if (phone == "请输入学生电话") {
-                alert('请输入学生电话');
-                return false;
+                $('input[name="phone"]').val("");
             }
+
         });
+
     });
 </script>
 </body>

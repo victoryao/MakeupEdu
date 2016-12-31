@@ -11,7 +11,7 @@ import java.util.List;
  */
 public interface IOrderDAO {
 
-    @Select("select id, s_id as sId, name, amount, discount, final_amount as finalAmount, pay_type as payType, type, status from `order` where s_id  = #{sId} and status = #{status} order by created asc")
+    @Select("select id, s_id as sId, name, amount, discount, final_amount as finalAmount, pay_type as payType, type, status, created from `order` where s_id  = #{sId} and status = #{status} order by created asc")
     List<OrderDO> getOrderListBySId(@Param("sId") int sId,@Param("status") int status);
 
 }

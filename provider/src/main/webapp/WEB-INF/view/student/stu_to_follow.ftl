@@ -28,6 +28,7 @@
     <h1 class="wh_h1">今天需跟进意向学员列表</h1>
     <div class="wh_tab">
         <form action="/willdate/list.do">
+            <input type="hidden" name="page" id="page"/>
             <table cellspacing="0" style="width:700px; margin:0 auto;">
                 <input type="hidden" name="page" id="page"/>
                 <thead>

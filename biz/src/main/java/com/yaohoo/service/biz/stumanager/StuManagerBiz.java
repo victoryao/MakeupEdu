@@ -4,9 +4,9 @@ import com.yaohoo.service.common.util.QueryResult;
 import com.yaohoo.service.domain.model.StudentModel;
 import com.yaohoo.service.domain.model.dos.OrderDO;
 import com.yaohoo.service.domain.model.dos.StuGraduateDO;
+import com.yaohoo.service.domain.model.dos.StudentDormDO;
 import com.yaohoo.service.domain.model.enums.StuStatusEnum;
 import com.yaohoo.service.service.order.OrderService;
-import com.yaohoo.service.service.student.ClassService;
 import com.yaohoo.service.service.student.StudentService;
 import com.yaohoo.service.service.stumanager.GraduateService;
 import com.yaohoo.service.service.stumanager.StudentDormService;
@@ -53,11 +53,11 @@ public class StuManagerBiz {
 
     private String hasManagerProperty(int sId, String type) {
         if ("dorm".equals(type)) {
-            Integer dormId = studentDormService.getStudentDormRelations(sId);
-            if (dormId == null) {
+            StudentDormDO studentDormDO = studentDormService.getStudentDormRelations(sId);
+            if (studentDormDO == null) {
                 return null;
             }
-            return studentDormService.getDormById(dormId).getdId();
+            return studentDormService.getDormById(studentDormDO.getdId()).getdId();
         } else if ("graduate".equals(type)) {
             List<StuGraduateDO> stuGraduateDO = graduateService.getStudentGraduates(sId);
             if (CollectionUtils.isEmpty(stuGraduateDO)) {

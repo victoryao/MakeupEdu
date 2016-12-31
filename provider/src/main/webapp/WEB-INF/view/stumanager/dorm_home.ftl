@@ -14,6 +14,18 @@
         function topage(page) {
             var form = document.forms[0];
             form.page.value = page;
+            var idInput = $('input[name="id"]');
+            var nameInput = $('input[name="name"]');
+            var phoneInput = $('input[name="phone"]');
+            if (idInput.val() == "请输入学生学号") {
+                idInput.val("");
+            }
+            if (nameInput.val() == "请输入学生姓名") {
+                nameInput.val("");
+            }
+            if (phoneInput.val() == "请输入学生电话") {
+                phoneInput.val("");
+            }
             form.submit();
         }
 
@@ -27,7 +39,8 @@
 </div>
 <div class="wh_content1">
     <h1 class="wh_h1">住宿安排</h1>
-    <form action="/student/manager/dorm/home.do">
+    <form action="/student/manager/home/list.do">
+        <input type="hidden" name="type" id="type" value="dorm"/>
         <div class="wh_sch">
             <form>
                 <input type="hidden" name="page" id="page"/>
@@ -61,19 +74,27 @@
                     <td>${student.name}</td>
                     <td>${student.phone}</td>
                     <td>
-                        <#if (student.dormStatus == 0)!>
+                        <#if (student.proStatus == 0)!>
                             未安排
                         </#if>
-                        <#if (student.dormStatus == 1)!>
+                        <#if (student.proStatus == 1)!>
                             已安排
                         </#if>
                     </td>
                     <td>
-                    ${student.dormId}
+                    ${student.property}
                     </td>
-                    <td><a class="wh_ta_1" href="/student/manager/dorm/list.do?sId=${student.id}&type=add" style="margin-right:10px;">入住</a>
-                        <a class="wh_ta_1" href="/student/manager/dorm/list.do?sId=${student.id}&type=exchange" style="margin-right:10px;border:1px solid #eb5e31;color:#eb5e31;">调换</a>
-                        <a class="wh_ta_1" href="/student/manager/dorm/list.do?sId=${student.id}&type=cancel" style="margin-right:10px;border:1px solid #eb5e31;color:#eb5e31;">退宿</a>
+                    <td>
+                        <#if (student.proStatus == 0)!>
+                            <a class="wh_ta_1" href="/student/manager/dorm/list.do?sId=${student.id}&type=add"
+                               style="margin-right:10px;border:1px solid #eb5e31;color:#eb5e31;">入住</a>
+                        </#if>
+                        <#if (student.proStatus == 1)!>
+                            <a class="wh_ta_1" href="/student/manager/dorm/list.do?sId=${student.id}&type=exchange"
+                               style="margin-right:10px;border:1px solid #eb5e31;color:#eb5e31;">调换</a>
+                            <a class="wh_ta_1" href="/student/manager/dorm/list.do?sId=${student.id}&type=cancel"
+                               style="margin-right:10px;border:1px solid #eb5e31;color:#eb5e31;">退宿</a>
+                        </#if>
                     </td>
                 </tr>
             </#list>
@@ -86,31 +107,22 @@
     $(function () {
 
         $('.wh_su').click(function () {
-
-
-            var xing = $('input[name="xingming"]').val();
-            var phone = $('input[name="phone"]').val();
-            var xuehao = $('input[name="xuehao"]').val();
-
+            var nameinput = $('input[name="name"]');
+            var phoneInput = $('input[name="phone"]');
+            var idInput = $('input[name="id"]');
+            var xing = nameinput.val();
+            var phone = phoneInput.val();
+            var xuehao = idInput.val();
             if (xuehao == "请输入学生学号") {
-                alert('请输入学生学号');
-                return false;
+                idInput.val("");
             }
-
             if (xing == "请输入学生姓名") {
-                alert('请输入学生姓名！');
-                return false;
+                nameinput.val("");
             }
-
-
             if (phone == "请输入学生电话") {
-                alert('请输入学生电话');
-                return false;
+                phoneInput.val("");
             }
-
-
         });
-
     });
 </script>
 

@@ -19,7 +19,8 @@
 </div>
 <div class="wh_content1">
     <h1 class="wh_h1">消费记录列表</h1>
-    <div style="font-size:14px;text-align:center;padding-bottom:30px;">学号：0001&nbsp;&nbsp;&nbsp;学员姓名：AAA&nbsp;&nbsp;&nbsp;学员电话：13125869875</div>
+    <div style="font-size:14px;text-align:center;padding-bottom:30px;">
+        学号：${student.id}&nbsp;&nbsp;&nbsp;学员姓名：${student.name}&nbsp;&nbsp;&nbsp;学员电话：${student.phone}</div>
 
     <div class="wh_tab">
         <table cellspacing="0">
@@ -27,59 +28,22 @@
                 <td>编号</td>
                 <td>时间</td>
                 <td>类别</td>
-                <td>项目</td>
                 <td>金额</td>
                 <td>折扣</td>
                 <td>应付金额</td>
             </tr>
+        <#list orderDOs as orderDO>
             <tr>
-                <td>1</td>
-                <td>2016.1.12</td>
-                <td>课程</td>
-                <td>XXXX</td>
-                <td>1000</td>
-                <td>1</td>
-                <td>1000</td>
+                <td>${orderDO.id}</td>
+                <td>${(orderDO.created?string("yyyy.MM.dd"))!}</td>
+                <td>${orderDO.type}</td>
+                <td>${orderDO.amount}</td>
+                <td>${orderDO.discount}</td>
+                <td>${orderDO.finalAmount}</td>
             </tr>
-            <tr>
-                <td>1</td>
-                <td>2016.1.12</td>
-                <td>产品</td>
-                <td>XXXX</td>
-                <td>1000</td>
-                <td>1</td>
-                <td>1000</td>
-            </tr>
-            <tr>
-                <td>1</td>
-                <td>2016.1.12</td>
-                <td>课程</td>
-                <td>XXXX</td>
-                <td>1000</td>
-                <td>1</td>
-                <td>1000</td>
-            </tr>
-            <tr>
-                <td>1</td>
-                <td>2016.1.12</td>
-                <td>住宿费</td>
-                <td>XXXX</td>
-                <td>1000</td>
-                <td>1</td>
-                <td>1000</td>
-            </tr>
-            <tr>
-                <td>1</td>
-                <td>2016.1.12</td>
-                <td>课程</td>
-                <td>XXXX</td>
-                <td>1000</td>
-                <td>1</td>
-                <td>1000</td>
-            </tr>
+        </#list>
         </table>
     </div>
-    <div class="wh_page"><a href="" class="wh_BACK" style="margin-left:400px;">确定</a></div>
 </div>
 
 

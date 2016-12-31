@@ -9,6 +9,23 @@
         $(document).ready(function () {
             $(".wh_tab tr:even").addClass('even');
         });
+
+        //到指定的分页页面
+        function topage(page) {
+            var form = document.forms[0];
+            form.page.value = page;
+            if ($('input[name="id"]').val() == "请输入学生学号") {
+                $("#id").val("");
+            }
+            if ($('input[name="name"]').val() == "请输入学生姓名") {
+                $("#name").val("");
+            }
+            if ($('input[name="phone"]').val() == "请输入学生电话") {
+                $("#phone").val("");
+            }
+            form.submit();
+        }
+
     </script>
 </head>
 
@@ -19,154 +36,70 @@
 </div>
 <div class="wh_content1">
     <h1 class="wh_h1">课程安排</h1>
-    <div class="wh_sch">
-        <form>
-            <input type="text" value="请输入学生学号" name="id" onFocus="if (this.value=='请输入学生学号') this.value=''"
+    <form action="/student/manager/home/list.do" id="mainForm">
+        <input type="hidden" name="page" id="page"/>
+        <input type="hidden" name="type" id="type" value="class"/>
+        <div class="wh_sch">
+            <input type="text" value="请输入学生学号" id="id" name="id" onFocus="if (this.value=='请输入学生学号') this.value=''"
                    onBlur="if (this.value==''){this.value='请输入学生学号'}"/>
-            <input type="text" value="请输入学生姓名" name="name" onFocus="if (this.value=='请输入学生姓名') this.value=''"
+            <input type="text" value="请输入学生姓名" id="name" name="name" onFocus="if (this.value=='请输入学生姓名') this.value=''"
                    onBlur="if (this.value==''){this.value='请输入学生姓名'}"/>
-            <input type="text" value="请输入学生电话" name="phone" onFocus="if (this.value=='请输入学生电话') this.value=''"
+            <input type="text" value="请输入学生电话" id="phone" name="phone" onFocus="if (this.value=='请输入学生电话') this.value=''"
                    onBlur="if (this.value==''){this.value='请输入学生电话'}"/>
-            <select>
-                <option value="课程状态" selected>课程状态</option>
-                <option value="未选课未试听">未选课未试听</option>
-                <option value="未选课已试听">未选课未试听</option>
-                <option value="已选课">已选课</option>
-                <option value="已毕业">已毕业</option>
-            </select>
+
             <input class="wh_su" type="submit" value="查询"/>
-        </form>
-    </div>
-    <div class="wh_tab">
-        <table cellspacing="0">
-            <tr class="wh_t1">
-                <td>编号</td>
-                <td>学号</td>
-                <td>学员姓名</td>
-                <td>学员联系方式</td>
-                <td>课程状态</td>
-                <td>课程名称</td>
-                <td>操作</td>
-            </tr>
-            <tr>
-                <td>1</td>
-                <td>888</td>
-                <td>我遇风</td>
-                <td>15555665566</td>
-                <td>未选课未试听</td>
-                <td>空</td>
-                <td><a class="wh_ta_1" href="" style="margin-right:10px;">选班</a><a class="wh_ta_1" href=""
-                                                                                   style="margin-right:10px;border:1px solid #eb5e31;color:#eb5e31;">升班</a><a
-                        class="wh_ta_1" href="" style="margin-right:10px;border:1px solid #eb5e31;color:#eb5e31;">转班</a><a
-                        class="wh_ta_1" href="" style="margin-right:10px;border:1px solid #eb5e31;color:#eb5e31;">结课</a>
-                </td>
-            </tr>
-            <tr>
-                <td>1</td>
-                <td>888</td>
-                <td>我遇风</td>
-                <td>15555665566</td>
-                <td>未选课已试听</td>
-                <td>空</td>
-                <td><a class="wh_ta_1" href="" style="margin-right:10px;">选班</a><a class="wh_ta_1" href=""
-                                                                                   style="margin-right:10px;border:1px solid #eb5e31;color:#eb5e31;">升班</a><a
-                        class="wh_ta_1" href="" style="margin-right:10px;border:1px solid #eb5e31;color:#eb5e31;">转班</a><a
-                        class="wh_ta_1" href="" style="margin-right:10px;border:1px solid #eb5e31;color:#eb5e31;">结课</a>
-                </td>
-            </tr>
-            <tr>
-                <td>1</td>
-                <td>888</td>
-                <td>我遇风</td>
-                <td>15555665566</td>
-                <td>未选课</td>
-                <td>空</td>
-                <td><a class="wh_ta_1" href="" style="margin-right:10px;">选班</a><a class="wh_ta_1" href=""
-                                                                                   style="margin-right:10px;border:1px solid #eb5e31;color:#eb5e31;">升班</a><a
-                        class="wh_ta_1" href="" style="margin-right:10px;border:1px solid #eb5e31;color:#eb5e31;">转班</a><a
-                        class="wh_ta_1" href="" style="margin-right:10px;border:1px solid #eb5e31;color:#eb5e31;">结课</a>
-                </td>
-            </tr>
-            <tr>
-                <td>1</td>
-                <td>888</td>
-                <td>我遇风</td>
-                <td>15555665566</td>
-                <td>已选课</td>
-                <td>美甲初级课</td>
-                <td><a class="wh_ta_1" href=""
-                       style="margin-right:10px;border:1px solid #eb5e31;color:#eb5e31;">选班</a><a class="wh_ta_1"
-                                                                                                  href=""
-                                                                                                  style="margin-right:10px;">升班</a><a
-                        class="wh_ta_1" href="" style="margin-right:10px;">转班</a><a class="wh_ta_1" href=""
-                                                                                    style="margin-right:10px;">结课</a>
-                </td>
-            </tr>
-            <tr>
-                <td>1</td>
-                <td>888</td>
-                <td>我遇风</td>
-                <td>15555665566</td>
-                <td>已选课</td>
-                <td>美甲高级课</td>
-                <td><a class="wh_ta_1" href=""
-                       style="margin-right:10px;border:1px solid #eb5e31;color:#eb5e31;">选班</a><a class="wh_ta_1"
-                                                                                                  href=""
-                                                                                                  style="margin-right:10px;">升班</a><a
-                        class="wh_ta_1" href="" style="margin-right:10px;">转班</a><a class="wh_ta_1" href=""
-                                                                                    style="margin-right:10px;">结课</a>
-                </td>
-            </tr>
-            <tr>
-                <td>1</td>
-                <td>888</td>
-                <td>我遇风</td>
-                <td>15555665566</td>
-                <td>已毕业</td>
-                <td>半永久</td>
-                <td><a class="wh_ta_1" href=""
-                       style="margin-right:10px;border:1px solid #eb5e31;color:#eb5e31;">选班</a><a class="wh_ta_1"
-                                                                                                  href=""
-                                                                                                  style="margin-right:10px;border:1px solid #eb5e31;color:#eb5e31;">升班</a><a
-                        class="wh_ta_1" href="" style="margin-right:10px;border:1px solid #eb5e31;color:#eb5e31;">转班</a><a
-                        class="wh_ta_1" href="" style="margin-right:10px;border:1px solid #eb5e31;color:#eb5e31;">结课</a>
-                </td>
-            </tr>
-        </table>
-    </div>
-    <div class="wh_page"><a href="">上一页</a><a href="">1</a><a href="" class="hover">2</a><a href="">下一页</a><a href=""
-                                                                                                              class="wh_BACK">BACK</a>
-    </div>
+
+        </div>
+        <div class="wh_tab">
+            <table cellspacing="0">
+                <tr class="wh_t1">
+                    <td>学号</td>
+                    <td>学员姓名</td>
+                    <td>学员联系方式</td>
+                    <td>操作</td>
+                </tr>
+            <#list pageView.records as student>
+                <tr>
+                    <td>${student.id}</td>
+                    <td>${student.name}</td>
+                    <td>${student.phone}</td>
+                    <td>
+                        <a class="wh_ta_1" href="/teacher/class/list.do?sId=${student.id}" style="width:100px;">查看详情</a>
+                    </td>
+
+                </tr>
+            </#list>
+
+            </table>
+        </div>
+    <#include "../../share/paging.ftl" >
+        <div class="wh_page">
+            <a
+                    href=""
+                    class="wh_BACK">BACK</a>
+        </div>
+    </form>
 </div>
 <script>
     $(function () {
 
         $('.wh_su').click(function () {
-
-
-            var xing = $('input[name="xingming"]').val();
-            var phone = $('input[name="phone"]').val();
-            var xuehao = $('input[name="xuehao"]').val();
-
+            var nameinput = $('input[name="name"]');
+            var phoneInput = $('input[name="phone"]');
+            var idInput = $('input[name="id"]');
+            var xing = nameinput.val();
+            var phone = phoneInput.val();
+            var xuehao = idInput.val();
             if (xuehao == "请输入学生学号") {
-                alert('请输入学生学号');
-                return false;
+                idInput.val("");
             }
-
             if (xing == "请输入学生姓名") {
-                alert('请输入学生姓名！');
-                return false;
+                nameinput.val("");
             }
-
-
             if (phone == "请输入学生电话") {
-                alert('请输入学生电话');
-                return false;
+                phoneInput.val("");
             }
-
-
         });
-
     });
 </script>
 

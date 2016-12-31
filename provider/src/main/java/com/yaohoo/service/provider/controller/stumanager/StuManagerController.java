@@ -47,6 +47,9 @@ public class StuManagerController {
     }
 
     private String navToPage(String type) {
+        if ("dorm".equals(type)) {
+            return "stumanager/dorm_home";
+        }
         if ("graduate".equals(type)) {
             return "graduate/graduate_home";
         }
@@ -55,6 +58,12 @@ public class StuManagerController {
         }
         if ("order".equals(type)){
             return "order/order_home";
+        }
+        if ("class".equals(type)){
+            return "classes/class_home";
+        }
+        if ("learnHistory".equals(type)){
+            return "classes/learn_history";
         }
         return "graduate/graduate_home";
     }

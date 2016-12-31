@@ -37,7 +37,7 @@
     <form action="/user/login.do" method="post">
         <input type="text" value="请输入用户名" onfocus="if (this.value=='请输入用户名') this.value=''"
                onblur="if (this.value==''){this.value='请输入用户名'}" id="userName" name="userName"/>
-        <input type="text" value="请输入密码" onfocus="if (this.value=='请输入密码') this.value=''"
+        <input type="password" value="请输入密码" onfocus="if (this.value=='请输入密码') this.value=''"
                onblur="if (this.value==''){this.value='请输入密码'}" id="password" name="password"/>
         <input class="wh_lg" type="submit" value="立即登录"/>
     </form>

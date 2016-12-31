@@ -36,16 +36,21 @@ public class StudentBiz {
      */
     @Transactional
     public Integer addStudentregister(String json) {
-        StudentRegisterModel registerModel = JSON.parseObject(json, StudentRegisterModel.class);
-        StudentModel studentModel = registerModel.getStudent();
-        StudentInfoModel studentInfoModel = registerModel.getStuInfo();
-        StuQueryModel queryModel = registerModel.getQuery();
-        studentService.addStudent(studentModel);
-        studentInfoModel.setStuId(studentModel.getId());
-        studentInfoService.addStudentInfo(studentInfoModel);
-        queryModel.setStuId(studentModel.getId());
-        stuQueryHisService.addStuQueryHis(queryModel);
-        return studentModel.getId();
+        try {
+            StudentRegisterModel registerModel = JSON.parseObject(json, StudentRegisterModel.class);
+            StudentModel studentModel = registerModel.getStudent();
+            StudentInfoModel studentInfoModel = registerModel.getStuInfo();
+            StuQueryModel queryModel = registerModel.getQuery();
+            studentService.addStudent(studentModel);
+            studentInfoModel.setStuId(studentModel.getId());
+            studentInfoService.addStudentInfo(studentInfoModel);
+            queryModel.setStuId(studentModel.getId());
+            stuQueryHisService.addStuQueryHis(queryModel);
+            return studentModel.getId();
+        } catch (Exception e) {
+            throw e;
+        }
+
     }
 
     @Transactional

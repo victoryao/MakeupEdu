@@ -76,7 +76,7 @@
                 </td>
                 <td>
                     <#if (student.property != '')!>
-                        <a class="wh_ta_1" href="">支付</a>
+                        <a class="wh_ta_1" href="/order/pay.do?sId=${student.id}">支付</a>
                     </#if>
                 </td>
             </tr>

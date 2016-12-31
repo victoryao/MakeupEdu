@@ -8,10 +8,17 @@ public class TeacherClassDO {
     private int id;
     private int cId;
     private int tId;
-    private String typeName;
+    private String ClassName;
+    private String ClassIntro;
+    private String teacherName;
+    private String teacherIntro;
+    private int classTimeType;
     private int curCount;
-    private int total;
+    private int totalCount;
     private int fee;
+    private int classType;
+    private String classTypeName;
+
 
     public int getId() {
         return id;
@@ -37,28 +44,52 @@ public class TeacherClassDO {
         this.tId = tId;
     }
 
-    public String getTypeName() {
-        return typeName;
-    }
-
-    public void setTypeName(String typeName) {
-        this.typeName = typeName;
-    }
-
     public int getCurCount() {
         return curCount;
+    }
+
+    public String getTeacherName() {
+        return teacherName;
+    }
+
+    public void setTeacherName(String teacherName) {
+        this.teacherName = teacherName;
+    }
+
+    public String getTeacherIntro() {
+        return teacherIntro;
+    }
+
+    public void setTeacherIntro(String teacherIntro) {
+        this.teacherIntro = teacherIntro;
     }
 
     public void setCurCount(int curCount) {
         this.curCount = curCount;
     }
 
-    public int getTotal() {
-        return total;
+    public int getClassTimeType() {
+        return classTimeType;
     }
 
-    public void setTotal(int total) {
-        this.total = total;
+    public void setClassTimeType(int classTimeType) {
+        this.classTimeType = classTimeType;
+    }
+
+    public int getTotalCount() {
+        return totalCount;
+    }
+
+    public void setTotalCount(int totalCount) {
+        this.totalCount = totalCount;
+    }
+
+    public int getClassType() {
+        return classType;
+    }
+
+    public void setClassType(int classType) {
+        this.classType = classType;
     }
 
     public int getFee() {
@@ -67,5 +98,29 @@ public class TeacherClassDO {
 
     public void setFee(int fee) {
         this.fee = fee;
+    }
+
+    public String getClassTypeName() {
+        return classTypeName;
+    }
+
+    public void setClassTypeName(String classTypeName) {
+        this.classTypeName = classTypeName;
+    }
+
+    public String getClassName() {
+        return ClassName;
+    }
+
+    public void setClassName(String className) {
+        ClassName = className;
+    }
+
+    public String getClassIntro() {
+        return ClassIntro;
+    }
+
+    public void setClassIntro(String classIntro) {
+        ClassIntro = classIntro;
     }
 }

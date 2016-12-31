@@ -55,7 +55,7 @@
     <h1 class="wh_h1">毕业去向</h1>
     <form action="/student/manager/home/list.do?type=graduate" id="mainForm">
         <div class="wh_sch" style="position:relative;">
-
+            <input type="hidden" name="type" id="type" value="graduate"/>
             <input type="hidden" name="page" id="page"/>
 
             <input type="text" value="请输入学生学号" id="id" name="id" onFocus="if (this.value=='请输入学生学号') this.value=''"
@@ -92,12 +92,17 @@
                     <td>${student.name}</td>
                     <td>${student.phone}</td>
                     <td>${student.property}</td>
-                    <td><a class="wh_ta_1" href="javascript:lr(${student.id},'${student.name}',${student.phone});"
-                           style="margin-right:10px;">录入</a>
-                        <a class="wh_ta_1" href="javascript:ck(${student.id},'${student.name}',${student.phone});"
-                           style="margin-right:10px;border:1px solid #eb5e31;color:#eb5e31;">查看</a>
-                        <a class="wh_ta_1" href="javascript:gx(${student.id},'${student.name}',${student.phone});"
-                           style="margin-right:10px;border:1px solid #eb5e31;color:#eb5e31;">更新</a>
+                    <td>
+                        <#if (student.proStatus == 0)!>
+                            <a class="wh_ta_1" href="javascript:lr(${student.id},'${student.name}',${student.phone});"
+                               style="margin-right:10px;border:1px solid #eb5e31;color:#eb5e31;">录入</a>
+                        </#if>
+                        <#if (student.proStatus == 1)!>
+                            <a class="wh_ta_1" href="javascript:ck(${student.id},'${student.name}',${student.phone});"
+                               style="margin-right:10px;border:1px solid #eb5e31;color:#eb5e31;">查看</a>
+                            <a class="wh_ta_1" href="javascript:gx(${student.id},'${student.name}',${student.phone});"
+                               style="margin-right:10px;border:1px solid #eb5e31;color:#eb5e31;">更新</a>
+                        </#if>
                     </td>
                 </tr>
             </#list>

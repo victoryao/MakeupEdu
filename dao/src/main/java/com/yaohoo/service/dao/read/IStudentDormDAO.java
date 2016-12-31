@@ -1,6 +1,7 @@
 package com.yaohoo.service.dao.read;
 
 import com.yaohoo.service.domain.model.dos.DormDO;
+import com.yaohoo.service.domain.model.dos.StudentDormDO;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 
@@ -11,8 +12,8 @@ import java.util.List;
  */
 public interface IStudentDormDAO {
 
-    @Select("select d_id from `student_dorm_relation` where s_id  = #{sId}")
-    Integer getStudentDormRelationIdBySId(int sId);
+    @Select("select id,d_id as dId, begin_time as beginTime from `student_dorm_relation` where s_id  = #{sId} and status = 0")
+    StudentDormDO getStudentDormRelationIdBySId(int sId);
 
     @Select("select d_id from `student_dorm_relation` where s_id  = #{sId}")
     Integer getDormIdByStudentId(int sId);

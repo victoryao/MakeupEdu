@@ -44,4 +44,15 @@ public class NavController {
         return "/stat/stat_home";
     }
 
+    @RequestMapping("/student/stat/income")
+    public String toIncomeStatPage() {
+        return "/stat/income_stat";
+    }
+
+    @RequestMapping("/student/stat/student")
+    public String toStuStatPage() {
+        return "/stat/student_stat";
+    }
+
+
 }

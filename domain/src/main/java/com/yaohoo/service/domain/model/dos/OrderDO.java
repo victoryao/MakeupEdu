@@ -18,6 +18,72 @@ public class OrderDO {
     private int status;
     private Date created;
 
+    public OrderDO(){}
+
+    public static class Builder {
+        private int sId;
+        private String name;
+        private float amount;
+        private float discount;
+        private float finalAmount;
+        private int payType;
+        private int type;
+        private int status;
+        private Date created;
+
+        public Builder() {
+        }
+
+        public Builder sId(int val) {
+            sId = val;
+            return this;
+        }
+
+        public Builder name(String val) {
+            name = val;
+            return this;
+        }
+
+        public Builder amount(float val) {
+            amount = val;
+            return this;
+        }
+
+        public Builder discount(float val) {
+            discount = val;
+            return this;
+        }
+
+        public Builder finalAmount(float val) {
+            finalAmount = val;
+            return this;
+        }
+
+        public Builder type(int val) {
+            type = val;
+            return this;
+        }
+
+        public Builder status(int val) {
+            status = val;
+            return this;
+        }
+
+        public OrderDO build() {
+            return new OrderDO(this);
+        }
+    }
+
+    private OrderDO(Builder builder) {
+        sId = builder.sId;
+        name = builder.name;
+        amount = builder.amount;
+        discount = builder.discount;
+        finalAmount = builder.finalAmount;
+        type = builder.type;
+        status = builder.status;
+    }
+
     public int getId() {
         return id;
     }
