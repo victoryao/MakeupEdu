@@ -46,7 +46,7 @@
         </form>
     </div>
 
-    <div style="margin-top:40px;font-size:20px;">从XXXX.XX.XX到XXXX.XX.XX期间，在校总人数/毕业总人数/咨询总人数为：XXXX人</div>
+    <div style="margin-top:40px;font-size:20px;">从XXXX.XX.XX到XXXX.XX.XX期间，在校总人数/毕业总人数/咨询总人数为：XX人</div>
 </div>
 <script>
     $(function () {
